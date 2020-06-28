@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
+    <title>Product list</title>
+</head>
+
+<body>
+
+<div class="fluid-container">
+    <nav>
+        <div th:replace="~{nav-bar::navBar(products)}"/>
+    </nav>
+</div>
+
+<div class="container">
+    <div class="row py-2">
+        <div class="col-12">
+            <a class="btn btn-primary" th:href="@{/product/new}" sec:authorize="hasAnyRole('SUPERADMIN','ADMIN','MANAGER')">Add Product</a>
+        </div>
+        <div class="col-12">
+            <table class="table table-bordered my-2">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price</th>
+                    <th scope="col" sec:authorize="hasAnyRole('SUPERADMIN','ADMIN','MANAGER')">Actions</th>
+                </tr>
+                <tr>
+                    <form>
+                        <th> <button type="submit" class="btn btn-info">Filter</button></th>
+                        <th scope="col"><input type="text" name="title" id="title" placeholder="title" th:value="${param.title}"/></th>
+                        <th scope="col"></th>
+                        <th scope="col">
+                            <input type="number" step="0.01" name="minPrice" id="minPrice" placeholder="min price" th:value="${param.minPrice}"/>
+                            <input type="number" step="0.01" name="maxPrice" id="maxPrice" placeholder="max price" th:value="${param.maxPrice}"/>
+                        </th>
+                        <th> <a class="btn btn-warning" th:href="@{/product/list}">Reset Filter</a></th>
+                    </form>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:unless="${productsPage.hasContent()}">
+                    <td class="text-center" colspan="5">No data</td>
+                </tr>
+                <tr th:if="${productsPage.hasContent()}" th:each="product : ${productsPage.content}">
+                    <th scope="row" th:text="${product.id}">1</th>
+                    <td th:text="${product.title}">Macbook pro 2015</td>
+                    <td th:text="${product.description}">Apple laptop</td>
+                    <td th:text="${product.price}">2000</td>
+                    <td sec:authorize="hasAnyRole('SUPERADMIN','ADMIN','MANAGER')">
+                        <a class="btn btn-success" th:href="@{'/product/update/' + ${product.id}}"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-danger" th:href="@{'/product/remove/' + ${product.id}}"><i class="far fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-12" th:if="${productsPage.hasContent()}">
+            <nav aria-label="...">
+                <ul class="pagination">
+                    <li class="page-item"
+                        th:classappend="${!productsPage.hasPrevious()} ? 'disabled'">
+                        <a class="page-link"
+                           th:href="@{/product/list(page=${prevPageNumber}, size=${productsPage.size}, title=${param.title}, minPrice=${param.minPrice}, maxPrice=${param.maxPrice})}" tabindex="-1">Previous</a>
+                    </li>
+
+                    <li th:each="num: ${#numbers.sequence(1, productsPage.totalPages)}"
+                        th:classappend="${num == productsPage.number + 1} ? 'active'"
+                        class="page-item">
+                        <a class="page-link"
+                           th:text="${num}"
+                           th:href="@{/product/list(page=${num}, size=${productsPage.size}, title=${param.title}, minPrice=${param.minPrice}, maxPrice=${param.maxPrice})}">1</a>
+                    </li>
+
+                    <li class="page-item"
+                        th:classappend="${!productsPage.hasNext()} ? 'disabled'">
+                        <a class="page-link"
+                           th:href="@{/product/list(page=${nextPageNumber}, size=${productsPage.size}, title=${param.title}, minPrice=${param.minPrice}, maxPrice=${param.maxPrice})}">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

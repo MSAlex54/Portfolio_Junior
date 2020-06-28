@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="client.controllers.ContrSignUp"
+            prefHeight="250.0" prefWidth="500.0">
+    <GridPane>
+        <Label text="Login" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Label fx:id="chkLoginResult" text="" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+        <Label text="NickName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Label text="Password" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label fx:id="chkPassResult" text="" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+        <Label text="Confirm password" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <TextField fx:id="loginField" editable="true" GridPane.columnIndex="2" GridPane.rowIndex="1"> </TextField>
+        <TextField fx:id="nickNameField" editable="true" GridPane.columnIndex="2" GridPane.rowIndex="2"> </TextField>
+        <PasswordField fx:id="passField" editable="true" GridPane.columnIndex="2" GridPane.rowIndex="3"> </PasswordField>
+        <PasswordField fx:id="confField" editable="true" GridPane.columnIndex="2" GridPane.rowIndex="4"> </PasswordField>
+        <Button fx:id="SignUp" onAction="#tryAndSignUp" text="SignUp" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="5"/>
+        <columnConstraints>
+<!--            <ColumnConstraints halignment="LEFT" percentWidth="3"> </ColumnConstraints>-->
+<!--            <ColumnConstraints halignment="LEFT" percentWidth="20"> </ColumnConstraints>-->
+<!--            <ColumnConstraints halignment="LEFT" percentWidth="40"> </ColumnConstraints>-->
+<!--            <ColumnConstraints halignment="LEFT" percentWidth="10"> </ColumnConstraints>-->
+<!--            <ColumnConstraints halignment="LEFT" percentWidth="10"> </ColumnConstraints>-->
+        </columnConstraints>
+        <padding>
+            <Insets bottom="0.0" left="10.0" right="10.0" top="0.0" />
+        </padding>
+        <rowConstraints>
+            <RowConstraints percentHeight="12"/>
+            <RowConstraints percentHeight="15"/>
+            <RowConstraints percentHeight="15"/>
+            <RowConstraints percentHeight="15"/>
+            <RowConstraints percentHeight="15"/>
+            <RowConstraints percentHeight="15"/>
+            <RowConstraints percentHeight="13"/>
+        </rowConstraints>
+    </GridPane>
+</AnchorPane>

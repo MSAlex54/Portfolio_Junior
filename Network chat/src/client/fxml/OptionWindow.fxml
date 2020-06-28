@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TabPane?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="client.controllers.ContrOption" prefHeight="300.0" prefWidth="500.0">
+    <TabPane>
+        <tabs>
+            <Tab text="View">
+                <GridPane>
+                    <Label text="Chat theme" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <ComboBox fx:id="themeChooser" onAction="#changeTheme" GridPane.columnIndex="2" GridPane.rowIndex="1" >
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="Dark"/>
+                                <String fx:value="Light"/>
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                    <Label text="Message Style" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                    <columnConstraints>
+                        <ColumnConstraints halignment="LEFT" percentWidth="10"> </ColumnConstraints>
+                        <ColumnConstraints halignment="LEFT" percentWidth="10"> </ColumnConstraints>
+                        <ColumnConstraints halignment="LEFT" percentWidth="10"> </ColumnConstraints>
+                    </columnConstraints>
+                    <padding>
+                        <Insets bottom="0.0" left="10.0" right="10.0" top="0.0" />
+                    </padding>
+                    <rowConstraints>
+                        <RowConstraints percentHeight="10"/>
+                        <RowConstraints percentHeight="10"/>
+                        <RowConstraints percentHeight="10"/>
+                    </rowConstraints>
+                </GridPane>
+            </Tab>
+            <Tab text="Chat">
+                <GridPane>
+                    <Label fx:id="updateStatus" text="" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                    <Label text="New nick" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <TextField fx:id="newNick" onAction="#updateNickName" promptText="new nick" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                    <Button text="Change nick" onAction="#updateNickName" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                    <columnConstraints>
+                        <ColumnConstraints halignment="LEFT" percentWidth="10"> </ColumnConstraints>
+                        <ColumnConstraints halignment="LEFT" percentWidth="10"> </ColumnConstraints>
+                    </columnConstraints>
+                    <padding>
+                        <Insets bottom="0.0" left="10.0" right="10.0" top="0.0" />
+                    </padding>
+                    <rowConstraints>
+                        <RowConstraints percentHeight="10"/>
+                        <RowConstraints percentHeight="10"/>
+                        <RowConstraints percentHeight="10"/>
+                        <RowConstraints percentHeight="10"/>
+                    </rowConstraints>
+                </GridPane>
+            </Tab>
+        </tabs>
+    </TabPane>
+</AnchorPane>

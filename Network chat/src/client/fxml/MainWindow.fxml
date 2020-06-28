@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?scenebuilder-stylesheet /css/Style.css?>
+
+<VBox fx:id="mainWindow" alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="client.controllers.ContrMain">
+    <fx:define>
+        <ToggleGroup fx:id="toggleGroup1"/>
+    </fx:define>
+    <MenuBar fx:id="menu">
+        <menus>
+            <Menu text="File">
+                <items>
+                    <MenuItem text="Options" onAction="#showOptions"/>
+                    <MenuItem text="Exit" onAction="#exitProgram" />
+                </items>
+            </Menu>
+        </menus>
+    </MenuBar>
+    <VBox>
+        <HBox fx:id="loginPanel" VBox.vgrow="ALWAYS" visible="true" managed="true">
+            <Label text="If you already registred, please  "/>
+            <Button fx:id="LogInBtn" text="Log In" onAction="#showLogin"/>
+        </HBox>
+        <HBox fx:id="SignupPanel" VBox.vgrow="ALWAYS" visible="true" managed="true">
+            <Label text="If you are not registred, please  "/>
+            <Button fx:id="SignUpBtn" text="Sign Up" onAction="#showSignUp"/>
+        </HBox>
+        <GridPane fx:id="mainPanel" managed="false" visible="false" >
+            <Label fx:id="label1" text="Chat" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <Label fx:id="label2" text="User List" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+<!--            <TextArea fx:id="chatArea" editable="false" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" VBox.vgrow="ALWAYS"/>-->
+        <ScrollPane fx:id="scrolChat" VBox.vgrow="ALWAYS" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                <VBox fx:id="vBoxChat">
+
+                </VBox>
+        </ScrollPane>
+
+            <ListView fx:id="userList" editable="false" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" VBox.vgrow="ALWAYS">
+                <contextMenu>
+                    <ContextMenu fx:id="cmUserList">
+                        <items>
+                            <MenuItem text="Copy NickName" onAction="#copyNickName"/>
+                            <MenuItem text="Send PM" onAction="#sendPM"/>
+                            <MenuItem text="Add to blackList" onAction="#addToBL"/>
+                            <MenuItem text="Remove from blacklist" onAction="#removeFromToBL"/>
+                        </items>
+                    </ContextMenu>
+                </contextMenu>
+            </ListView>
+            <TextField fx:id="msgField" onAction="#sendMsg" promptText="Введите сообщение..." GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="2" HBox.hgrow="ALWAYS" />
+            <Button fx:id="btnSend" onAction="#sendMsg" text="Send" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
+            <columnConstraints>
+                <ColumnConstraints halignment="LEFT" percentWidth="78"> </ColumnConstraints>
+                <ColumnConstraints halignment="LEFT" percentWidth="4"> </ColumnConstraints>
+                <ColumnConstraints halignment="LEFT" percentWidth="18"> </ColumnConstraints>
+            </columnConstraints>
+            <padding>
+                <Insets bottom="0.0" left="10.0" right="10.0" top="0.0" />
+            </padding>
+             <rowConstraints>
+                <RowConstraints percentHeight="5" />
+                <RowConstraints percentHeight="85"/>
+                <RowConstraints percentHeight="10"/>
+             </rowConstraints>
+        </GridPane>
+    </VBox>
+</VBox>

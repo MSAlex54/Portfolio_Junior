@@ -1,0 +1,23 @@
+#mainWindow{
+    -fx-background-color: white;
+}
+#chatArea{
+    -fx-border-color: blue;
+}
+#UserList{
+    -fx-border-color: orange;
+}
+#msgField{
+    -fx-border-color: green;
+}
+#btnSend{
+    -fx-background-color: blue;
+    -fx-border-color: black;
+}
+#btnSend:hover {
+    -fx-background-color: orange;
+}
+#vBoxChat{
+    -fx-background-color: white;
+    -fx-border-color: black;
+}
