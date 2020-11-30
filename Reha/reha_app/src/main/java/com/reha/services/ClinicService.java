@@ -134,9 +134,10 @@ public class ClinicService {
 
     /**
      * Generate monthly events
+     *
      * @param assignment which contains this events
-     * @param fromDate start date
-     * @param moments list of time moments
+     * @param fromDate   start date
+     * @param moments    list of time moments
      * @return generated events list
      */
     private List<Event> generateMonthlyEvents(Assignment assignment, LocalDate fromDate, List<Time> moments) {
@@ -148,7 +149,7 @@ public class ClinicService {
         }
         while (cursorDate.isBefore(tillDate.plusDays(1))) {
             if (cursorDate.getDayOfMonth() == assignment.getDayOfMonth() ||
-                    (assignment.getDayOfMonth() > cursorDate.lengthOfMonth() && assignment.getDayOfMonth() > cursorDate.getDayOfMonth() )
+                    (assignment.getDayOfMonth() > cursorDate.lengthOfMonth() && assignment.getDayOfMonth() > cursorDate.getDayOfMonth())
             ) {
                 for (Time t : moments) {
                     eventList.add(eventService.generateEvent(assignment, LocalDateTime.of(cursorDate, t.toLocalTime())));
@@ -163,10 +164,11 @@ public class ClinicService {
 
     /**
      * Generate weekly events. Events wil be generate on select days of week
+     *
      * @param assignment which contains this events
-     * @param fromDate start date
-     * @param moments list of time moments
-     * @param days list of days of week
+     * @param fromDate   start date
+     * @param moments    list of time moments
+     * @param days       list of days of week
      * @return generated events list
      */
     private List<Event> generateWeeklyEvents(Assignment assignment, LocalDate fromDate, List<Time> moments, List<String> days) {
@@ -206,9 +208,10 @@ public class ClinicService {
 
     /**
      * Generate daily events
+     *
      * @param assignment which contains this events
-     * @param fromDate start date
-     * @param moments list of time moments
+     * @param fromDate   start date
+     * @param moments    list of time moments
      * @return generated events list
      */
     private List<Event> generateDailyEvents(Assignment assignment, LocalDate fromDate, List<Time> moments) {

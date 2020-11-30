@@ -32,7 +32,8 @@ public class AssignmentService {
 
     /**
      * create new assignment
-     * @param dto assignmentDto from front side
+     *
+     * @param dto       assignmentDto from front side
      * @param patientId id of patient
      */
     public void createAssignment(AssignmentDto dto, int patientId) {

@@ -1,7 +1,10 @@
 package com.reha.model.entity;
 
 import com.reha.model.enums.AssignmentStatuses;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.sql.Date;

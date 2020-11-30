@@ -4,7 +4,6 @@ import com.reha.dao.interfaces.PatientRepository;
 import com.reha.dao.interfaces.TreatmentRepository;
 import com.reha.model.dto.AssignmentDto;
 import com.reha.model.entity.Assignment;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,14 +15,12 @@ public class AssignmentMapper extends AbstractMapper<Assignment, AssignmentDto> 
 
     private final TreatmentRepository treatmentRepository;
     private final PatientRepository patientRepository;
-    private final ModelMapper mapper;
 
     @Autowired
-    public AssignmentMapper(TreatmentRepository treatmentRepository, PatientRepository patientRepository, ModelMapper mapper) {
+    public AssignmentMapper(TreatmentRepository treatmentRepository, PatientRepository patientRepository) {
         super(Assignment.class, AssignmentDto.class);
         this.treatmentRepository = treatmentRepository;
         this.patientRepository = patientRepository;
-        this.mapper = mapper;
     }
 
     @Override

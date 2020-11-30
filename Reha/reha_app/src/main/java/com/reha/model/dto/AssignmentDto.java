@@ -48,7 +48,7 @@ public class AssignmentDto extends AbstractDto {
         DateFormat formatter = new SimpleDateFormat("HH:mm");
         ArrayList<Time> mom = new ArrayList<>();
         for (String s : moments) {
-            if (Objects.nonNull(s)){
+            if (Objects.nonNull(s)) {
                 try {
                     mom.add(new Time(formatter.parse(s).getTime()));
                 } catch (ParseException e) {
